@@ -1,0 +1,52 @@
+# ==========================================
+# Visual Studio & IDE Files
+# ==========================================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ==========================================
+# Build Outputs (.NET / MSBuild)
+# ==========================================
+[Bb]in/
+[Oo]bj/
+*.log
+
+# ==========================================
+# Custom Pipeline: Obfuscar & Single-File
+# ==========================================
+# Keeps your intermediate scrambled files out
+[Oo]bfuscated/
+
+# Keeps your massive 59MB final executables out
+[Pp]ublish/
+*[Pp]ublish/
+
+# ==========================================
+# Security / Code Signing (CRITICAL)
+# ==========================================
+# Do NOT commit your certificate files! 
+# (e.g., SongCloudUploader_1_TemporaryKey.pfx)
+*.pfx
+*.snk
+*.key
+*.publishsettings
+
+# ==========================================
+# NuGet Packages
+# ==========================================
+packages/
+*.nupkg
+.nuget/
+
+# ==========================================
+# OS & Temporary Files
+# ==========================================
+Thumbs.db
+ehthumbs.db
+.DS_Store
+*.tmp
+*.bak
+*.swp
