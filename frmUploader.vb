@@ -109,7 +109,12 @@ Public Class frmUploader
         If selectedSongsCollection.Count > 0 Then
             uploadPosition = 1
 
-            Dim config = New AmazonS3Config With {.ServiceURL = "https://sgp1.digitaloceanspaces.com"}
+            Dim config = New AmazonS3Config With {
+                .ServiceURL = "https://sgp1.digitaloceanspaces.com",
+                .AuthenticationRegion = "sgp1",
+                .EndpointDiscoveryEnabled = False,
+                .ForcePathStyle = False
+            }
             s3Client = New AmazonS3Client(SystemMod.AWS_Access, SystemMod.AWS_Secret, config)
 
             SetLogMessage("Begin Upload to " & Me.bucketName)
@@ -138,6 +143,19 @@ Public Class frmUploader
                 songLocationDrive.Items.Add(String.Concat(Strings.Left(drv.Name, 2), " [", drv.VolumeLabel, "]"))
             End If
         Next
+
+        System.Net.WebRequest.DefaultWebProxy = Nothing
+
+        ' --- ANTI-FIREWALL NETWORK SETTINGS ---
+        ' 1. Ignore slow proxy auto-detection
+        System.Net.WebRequest.DefaultWebProxy = Nothing
+
+        ' 2. KILL THE "100-CONTINUE" TIMEOUT (This fixes the 7-minute delay)
+        System.Net.ServicePointManager.Expect100Continue = False
+
+        ' 3. Force modern TLS 1.2/1.3 (Enterprise firewalls block older SSL)
+        System.Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Tls12 Or Net.SecurityProtocolType.Tls13
+        ' --------------------------------------
 
         Dim wrapper As New Desi(SystemMod.PRE_Enc_DB_Credential)
 
@@ -237,7 +255,12 @@ Public Class frmUploader
 
                 s3Client = Nothing
 
-                Dim config = New AmazonS3Config With {.ServiceURL = cloudServerUrl}
+                Dim config = New AmazonS3Config With {
+                    .ServiceURL = cloudServerUrl,
+                    .AuthenticationRegion = "sgp1",
+                    .EndpointDiscoveryEnabled = False,
+                    .ForcePathStyle = False
+                }
                 s3Client = New AmazonS3Client(SystemMod.AWS_Access, SystemMod.AWS_Secret, config)
 
             End If
@@ -351,7 +374,12 @@ Public Class frmUploader
 
             s3Client = Nothing
 
-            Dim config = New AmazonS3Config With {.ServiceURL = "https://sgp1.digitaloceanspaces.com"}
+            Dim config = New AmazonS3Config With {
+                .ServiceURL = "https://sgp1.digitaloceanspaces.com",
+                .AuthenticationRegion = "sgp1",
+                .EndpointDiscoveryEnabled = False,
+                .ForcePathStyle = False
+            }
             s3Client = New AmazonS3Client(SystemMod.AWS_Access, SystemMod.AWS_Secret, config)
 
             bw_updater.RunWorkerAsync()

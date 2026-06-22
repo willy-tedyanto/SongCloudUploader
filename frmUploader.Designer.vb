@@ -289,8 +289,9 @@ Partial Class frmUploader
         ' 
         ' lblVersion
         ' 
+        lblVersion.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblVersion.AutoSize = True
-        lblVersion.Location = New Point(1427, 5)
+        lblVersion.Location = New Point(1236, 5)
         lblVersion.Margin = New Padding(4, 0, 4, 0)
         lblVersion.Name = "lblVersion"
         lblVersion.Size = New Size(58, 15)

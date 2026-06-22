@@ -6,7 +6,12 @@ Imports Amazon.S3.Transfer
 Public Class AmazonSDK
 
     Public Function DeleteFile(ByVal targetBucketName As String, ByVal keyName As String) As String
-        Dim config = New AmazonS3Config With {.ServiceURL = "https://sgp1.digitaloceanspaces.com"}
+        Dim config = New AmazonS3Config With {
+            .ServiceURL = "https://sgp1.digitaloceanspaces.com",
+            .AuthenticationRegion = "sgp1", ' Stops AWS from guessing the region
+            .EndpointDiscoveryEnabled = False, ' Stops enterprise proxies from dropping discovery packets
+            .ForcePathStyle = False ' DigitalOcean requires this to be false/default
+        }
 
         Dim client As AmazonS3Client = New AmazonS3Client(SystemMod.AWS_Access, SystemMod.AWS_Secret, config)
 

@@ -28,8 +28,9 @@ Module SystemMod
     Public PRE_USER_ID As String
     Public PRE_USER_NAME As String
 
-    Public API_BASE_URL As String = "http://159.65.1.198"
+    'Public API_BASE_URL As String = "http://159.65.1.198"'
     'Public API_BASE_URL As String = "http://127.0.0.1:5000"
+    Public API_BASE_URL As String = "https://savegoldfish.com"
 
     Function GetHash(ByVal theInput As String) As String
 
