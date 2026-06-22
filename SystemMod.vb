@@ -114,10 +114,6 @@ Module SystemMod
 
     End Sub
 
-    Function TambahkanKarakterEscape(ByVal str As String) As String
-        Return Replace(str, "'", "\\")
-    End Function
-
     Function BeriKarakterEscape(ByVal str As String) As String
         '=== Khusus ketika encrypt ===
         BeriKarakterEscape = Replace(str, "'", "\")

@@ -282,8 +282,8 @@ Public Class frmUploader
         strPath = szEncryptDecrypt(songItem.Path, strKey)
 
         ' Prepare song object for API
-        Dim cleanTitle As String = TambahkanKarakterEscape(songItem.Title)
-        Dim cleanArtist As String = TambahkanKarakterEscape(songItem.Artist)
+        Dim cleanTitle As String = BeriKarakterEscape(songItem.Title)
+        Dim cleanArtist As String = BeriKarakterEscape(songItem.Artist)
 
         ' 2. Package data into a Dictionary for the API
         Dim postData As New Dictionary(Of String, String) From {

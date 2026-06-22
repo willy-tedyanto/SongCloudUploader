@@ -42,8 +42,8 @@
     <SignManifests>false</SignManifests>
     <AssemblyTitle>SongCloudUploader</AssemblyTitle>
     <Product>SongCloudUploader</Product>
-    <AssemblyVersion>3.0.0.3</AssemblyVersion>
-    <FileVersion>3.0.0.3</FileVersion>
+    <AssemblyVersion>3.0.0.5</AssemblyVersion>
+    <FileVersion>3.0.0.5</FileVersion>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
